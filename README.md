@@ -4,16 +4,16 @@ terminal commands for powershell and linux
 Open Power Shell - Admin
 
 use powershell to give you permissions to use Hyperv manager
-Set-Item WSMan:\localhost\Client\TrustedHosts -Value "win-hyper-vMS"
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "name of server"
 
-Enable-WSManCredSSP -Role client -DelegateComputer "win-hyper-vMS"
+Enable-WSManCredSSP -Role client -DelegateComputer "name of server"
 
 #Attempt Powershell Remoting / attempt to connect to remote server
-Enter-PSSession -ComputerName win-hyper-vMS
+Enter-PSSession -ComputerName name of server
 
 #add an entry to the hosts file for hosts fqdn / check our hosts file / and add the server ip etc
 Get-Content -Path "C:\Windows\System32\drivers\etc\hosts"
-Add-Content -path "C:\Windows\System32\drivers\etc\hosts" =Value "192.168.1.54 win-hyper-vMS"
+Add-Content -path "C:\Windows\System32\drivers\etc\hosts" =Value "IP name of server"
 
 #set adopter connection to private
 Get-NetConnectionProfile
@@ -24,11 +24,11 @@ Enable-PSRemoting
 
 #add the entire domain for delegation
 Get-WSManCredSSP
-Enable-WSManCredSSP -Role Client -DelegateComputer "* win-hyper-vMS"
+Enable-WSManCredSSP -Role Client -DelegateComputer "* name of server"
 
 #add credentioals for each computer
 cmdkey /list
-cmdkey /add:win-hyper-vMS /user:jon /pass:jk9700TomJeffery12
+cmdkey /add:win-hyper-vMS /user:whatever /pass:passw0rd
 #
 #
 #Add all computers to the TrustedHosts list
