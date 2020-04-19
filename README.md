@@ -1,5 +1,5 @@
 # next-cloud
-terminal commands for powershell and linux
+terminal commands for powershell
 # powershell commands to allow hyper-v manager access to remote server
 Open Power Shell - Admin
 
@@ -29,3 +29,19 @@ Enable-WSManCredSSP -Role Client -DelegateComputer "* win-hyper-vMS"
 #add credentioals for each computer
 cmdkey /list
 cmdkey /add:win-hyper-vMS /user:jon /pass:jk9700TomJeffery12
+#
+#
+#Add all computers to the TrustedHosts list
+Using the Set-Item cmdlet and the wildcard you can add all the computers to the TrustedHosts list with the following command.
+
+#check Trusted hosts list
+
+Get-Item WSMan:\localhost\Client\TrustedHosts
+
+#set (dangerous) a wild-card
+
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value *
+
+#add a number of specific machine
+
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value 'machineA,machineB'
