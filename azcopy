@@ -1,1 +1,5 @@
-azcopy.exe
+#powershell
+azCopy.exe /Source:"\\folder for pst\PSTs" azCopy.exe /Source:" 
+/Dest:"https://45feb4c6250f46bd896deba.blob.core.windows.net/ingestiondata?sv=2015-04-05&sr=c&si=IngestionSasForAzCopy20200ururydsjdhure=RdC1yGuyr45467jzUMKv04U8f1YUfcQmeVngFaXrUo%%3D&se=2020-05-02T09%%3A27%%3A33Z" 
+/V:"C:\Users\MSwork\Desktop\logAZURE" 
+/Y
