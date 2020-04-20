@@ -1,0 +1,46 @@
+Install Fail2Ban on Ubuntu
+#First, we need to update our local package index and then we can use apt to download and install the package:
+sudo apt-get update
+sudo apt-get install fail2ban
+
+#start/stop
+systemctl start fail2ban
+systemctl enable fail2ban
+
+
+#The configuration directory of fail2ban located at the 
+/etc/fail2ban
+directory. To configure the fail2ban, you need to copy the default configuration jail.conf
+to  
+jail.local
+
+
+Copy the default fail2ban configuration jail.conf
+to jail.local
+using the cp command below.
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+Now edit the configuration jail.local
+using vim editor.
+vim /etc/fail2ban/jail.local
+– Basic Configuration
+
+On the [DEFAULT]
+section, change everything as you need as below.
+[DEFAULT]
+# "ignoreip" can be a list of IP addresses, CIDR masks or DNS hosts. Fail2ban
+# will not ban a host that matches an address in this list. Several addresses
+# can be defined using space (and/or comma) separator.
+ignoreip = 127.0.0.1/8 10.5.5.1/24
+# "bantime" is the number of seconds that a host is banned.
+bantime = 60m
+# A host is banned if it has generated "maxretry" during the last "findtime"
+# seconds.
+findtime = 5m
+# "maxretry" is the number of failures before a host gets banned.
+maxretry = 5
+# "backend" specifies the backend used to get files modification.
+# systemd: uses systemd python library to access the systemd journal.
+# Specifying "logpath" is not valid for this backend.
+# See "journalmatch" in the jails associated filter config
+backend=systemd
