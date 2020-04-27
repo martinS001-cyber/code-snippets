@@ -1,0 +1,4 @@
+# update all containers in the stack
+ds -c down
+ds -p
+ds -c up
